@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 이위의 코드가 설계도 -->
+<mapper namespace="com.smhrd.mapper.BoardMapper">
+<!-- 위코드는 인터페이스 BoardMapper를 연결해준거다. 
+     따라서 인터페이스 이름과 여기 mapper이름이 동일 해야한다.
+     그래야 알아서 찾아서 연결해준다.
+     -->
+
+	<!-- 쿼리문 쪼개다. -->
+	<!-- 게시글 목록보기. -->
+	<select id="boardList" resultType="com.smhrd.entity.Board" >
+	   <!-- id가 BoardMapper 인터페이스안의 해당 메소드 이름과 동일 해야한다.  -->
+	   SELECT * FROM BOARD ORDER BY INDATE DESC
+	</select>
+	
+	<select id="boardContent" parameterType="int" resultType="com.smhrd.entity.Board" >
+	   <!-- id가 BoardMapper 인터페이스안의 해당 메소드 이름과 동일 해야한다.  -->
+	   SELECT * FROM BOARD WHERE IDX= #{idx}
+	</select>
+
+	<insert id="boardInsert" parameterType="com.smhrd.entity.Board">
+		INSERT INTO BOARD (TITLE,CONTENT,WRITER) VALUES(#{title},#{content},#{writer})	
+	</insert>
+	
+	<delete id="boardDelete" parameterType="int">
+		DELETE FROM BOARD WHERE IDX=#{idx}
+	</delete>
+
+	<update id="boardUpdate" parameterType="com.smhrd.entity.Board">
+		UPDATE BOARD SET TITLE=#{title}, CONTENT=#{content}, WRITER=#{writer} WHERE IDX=#{idx}
+	</update>
+
+	<update id="boardCount" parameterType="int">
+		UPDATE BOARD SET COUNT=COUNT+1 WHERE IDX=#{idx}
+	</update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
