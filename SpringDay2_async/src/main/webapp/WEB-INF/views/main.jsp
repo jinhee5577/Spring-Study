@@ -24,9 +24,10 @@
    })
 
    function boardList() {
-      // 비동기 통신할 때 JavsScript jQuery사용 -> ajax
+	   // 비동기 통신할 때 JavsScript jQuery사용 -> ajax
       // 어떤 형태? 객체형태 -> JSON(JavaScript Object Notation) -> {key1 : value1, key2 : value2, key3 : {key4 : value4}}
       // 어디로 보낼건지, 어떤 데이터타입을 보낼건지, 어떤 데이터타입을 받을건지, 어떤방식으로 보낼건지, 성공시에는 뭘할건지, 실패시에는 뭘할건지
+
 
       $.ajax({
     	//  url : "boardList", 기존 방식
@@ -224,7 +225,7 @@
          success : boardList,
          error : function(){alert("error");}
       })
-      
+      //
    }
    
    
