@@ -24,7 +24,7 @@
 	</beans:bean>
 	
 	<!-- com.smhrd.controller 에서 찾겠다. -->
-	<context:component-scan base-package="com.smhrd.controller" />
+	<context:component-scan base-package="com.smhrd.controller2" />
 	<!-- 하나더 만들고 싶으면 해당위치 컨트롤로 하나더 만들던가. 
 		<context:component-scan base-package="com.smhrd.controller" />
 	-->

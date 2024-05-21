@@ -1,4 +1,4 @@
-package com.smhrd.controller;
+package com.smhrd.controller2;
 
 import java.util.List;
 
