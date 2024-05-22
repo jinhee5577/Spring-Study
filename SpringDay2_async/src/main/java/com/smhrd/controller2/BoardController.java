@@ -45,22 +45,24 @@ public class BoardController {
 	 * // 게시글 전체보기 (비동기 방식으로 가져 올것이다.) // 비동기 방식은 데이터를 반환한다. // 비동기 방식으로 데이터를 응답
 	 * 받을때 @ResponseBody가 무조건 필요하다. // @ResponseBody에 담아서 보낸다.
 	 * 
-	 * @GetMapping("boardList.do") public @ResponseBody List<Board> boardList() {
-	 * System.out.println("[게시글 전체보기]"); List<Board> list = mapper.boardList();
+	 * @GetMapping("boardList.do") 
+	 * public @ResponseBody List<Board> boardList() {
+	 * System.out.println("[게시글 전체보기]"); 
+	 * List<Board> list = mapper.boardList();
 	 * 
 	 * return list; }
 	 * 
 	 * 
 	 * // 게시글 등록하기
 	 * 
-	 * @PostMapping("boardInsert.do") public @ResponseBody void boardInsert(Board
-	 * board) { mapper.boardInsert(board); }
+	 * @PostMapping("boardInsert.do") 
+	 * public @ResponseBody void boardInsert(Board board) { mapper.boardInsert(board); }
 	 * 
 	 * 
 	 * // 게시글 상세 보기 // V -> C -> I -> M
 	 * 
-	 * @GetMapping("boardContent.do") public @ResponseBody Board
-	 * boardContent(@RequestParam("idx") int idx) { // @RequestParam("idx")생략 가능.
+	 * @GetMapping("boardContent.do") 
+	 * public @ResponseBody Board boardContent(@RequestParam("idx") int idx) { // @RequestParam("idx")생략 가능.
 	 * Board board = mapper.boardContent(idx);
 	 * 
 	 * return board; }
@@ -68,21 +70,24 @@ public class BoardController {
 	 * 
 	 * // 게시글 하나 삭제하기. // 이제 두가지 방법 모두 다 잘됨.
 	 * 
-	 * @DeleteMapping("boardDelete.do") // @GetMapping("boardDelete.do")
+	 * @DeleteMapping("boardDelete.do") 
+	 * // @GetMapping("boardDelete.do")
 	 * public @ResponseBody void boardDelete(@RequestParam("idx") int idx) {
 	 * mapper.boardDelete(idx); }
 	 * 
 	 * 
 	 * // 게시글 수정하기
 	 * 
-	 * @PostMapping("boardUpdate.do") public @ResponseBody void boardUpdate(Board
-	 * board) { // idx, title, content // 조회수 올리기. //
-	 * mapper.boardCount(board.getIdx()); mapper.boardUpdate(board); }
+	 * @PostMapping("boardUpdate.do") 
+	 * public @ResponseBody void boardUpdate(Board board) { // idx, title, content // 조회수 올리기. //
+	 * mapper.boardCount(board.getIdx()); 
+	 * mapper.boardUpdate(board); 
+	 * }
 	 * 
 	 * // 게시글 조회수 올리기
 	 * 
-	 * @GetMapping("boardCount.do") public @ResponseBody void
-	 * boardCount(@RequestParam("idx") int idx) { mapper.boardCount(idx); }
+	 * @GetMapping("boardCount.do") 
+	 * public @ResponseBody void boardCount(@RequestParam("idx") int idx) { mapper.boardCount(idx); }
 	 */
 	
 	

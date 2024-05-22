@@ -23,26 +23,25 @@
       boardList();
    })
 
+   
+   // 전체 게시글 목록 리스트 불러옴.
    function boardList() {
 	   // 비동기 통신할 때 JavsScript jQuery사용 -> ajax
       // 어떤 형태? 객체형태 -> JSON(JavaScript Object Notation) -> {key1 : value1, key2 : value2, key3 : {key4 : value4}}
       // 어디로 보낼건지, 어떤 데이터타입을 보낼건지, 어떤 데이터타입을 받을건지, 어떤방식으로 보낼건지, 성공시에는 뭘할건지, 실패시에는 뭘할건지
 
-
       $.ajax({
-    	//  url : "boardList", 기존 방식
+    	//  url : "boardList.do", 기존 방식
          url : "board/all",
          type : "get",
          dataType : "json",
          success : makeView,
-         error : function() {
-            alert("error");
-         }
+         error : function() { alert("error"); }
       })
    }
 
    // 성공시 makeView 함수 실행 -> jsp에 데이터를 뿌려주겠다!
-   function makeView(data) { // data = [{key : value}, {} ,{} , ...]
+   function makeView(data) { // data = [{key : value}, {} ,{} , ...] DB에 저장된 게시글 모든 목록이 들어있는 ArrayList(배열)가 넘어온다.
       console.log(data);
       var listHtml = "<table class='table table-bordered'>";
       listHtml += "<tr>";
@@ -55,10 +54,7 @@
 
       // jQuery 반복문
       // data를 받아왔을 때 실행될 함수
-      $
-            .each(
-                  data,
-                  function(index, obj) { // obj -> {idx:23, title:ttt, content:월월...}
+      $.each(data, function(index, obj) { // obj -> {idx:23, title:ttt, content:월월...}
                      listHtml += "<tr>";
                      listHtml += "<td>" + (index + 1) + "</td>";
                      listHtml += "<td id='t"+obj.idx+"'><a href='javascript:goContent("+ obj.idx + ")'>" + obj.title + "</a></td>";
@@ -128,9 +124,10 @@
          type : "post",
          data : fData,
          success : boardList,
-         error : function() {
-            alert("error");
-         }
+         // 여기서 바로 makeView()를 호출해 버리면 받는 파라미터가 없기때문에 에러가 난다.
+         /* 또한 DB에 새로추가한 게시글까지 포함한 전체 목록 리스트를 보고싶으면 DB에서 목록리스트를 불러오는 ajax요청을 하는 boardList()를 호출해야
+         새로 추가한 게시글까지 포함된 목록리스트 data를 불러온다. */
+         error : function() { alert("error"); }
       })
 
       // 글쓰기 폼에 있는 기존값 지워주기
@@ -152,12 +149,8 @@
             type : "get",
           //  data : { "idx" : idx },
             dataType : "json",
-            success : function(data) {
-               $("#ta" + idx).val(data.content);
-            },
-            error : function() {
-               alert("error");
-            }
+            success : function(data) { $("#ta" + idx).val(data.content); },
+            error : function() { alert("error"); }
          })
 
          $("#c" + idx).css("display", "table-row");
@@ -186,9 +179,7 @@
          type : "delete",
       //  data : {"idx":idx},
          success : boardList,
-         error : function(){
-            alert("error")
-         }
+         error : function(){alert("error")}
       })
       
    }
@@ -300,13 +291,11 @@
 
    <script type="text/javascript">
       $(document).ready(function() {
-
+    	  // 게시글 등록이 성공 했을 경우만
+    	  // ${result}는 한번 사용하고 사라짐.
          let result = '${result}';
 
-         if (result == 'ok') {
-            $('#myModal').modal("show");
-         }
-
+         if (result == 'ok') { $('#myModal').modal("show"); }
       });
    </script>
 
