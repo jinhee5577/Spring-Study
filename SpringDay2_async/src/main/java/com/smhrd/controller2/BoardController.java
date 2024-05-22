@@ -22,6 +22,7 @@ import com.smhrd.mapper.BoardMapper;
 public class BoardController {
 	// 게시판 관련 기능 수행.
 	// Req(URL) : ip:port/context_path/- 	
+	//
 	
 	@Autowired
     // 이 어노테이션을 쓰면 interface에서 만든 클래스 객체가 자동으로 만들어져서 여기로 불러올수 있다.
