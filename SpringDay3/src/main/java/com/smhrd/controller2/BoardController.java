@@ -32,11 +32,10 @@ public class BoardController {
 	// View -> F.CController -> Interface -> Mapper
 	
 	
-	// "/"로 요청이 들어왓을때 main.jsp로 이동.
-	@GetMapping("/")  // 이것만 동기 이다.
-    public String main() {
-		
-		return "main";
+	// "/boardMain.do"로 요청이 들어왓을때 main.jsp로 이동.
+	@GetMapping("/boardmain.do")  // 이것만 동기 이다.
+    public String main() {		
+		return "board/main";  // 뷰 리졸브가 wef-inf/view/board/main.jsp
 	}
 	
 	
