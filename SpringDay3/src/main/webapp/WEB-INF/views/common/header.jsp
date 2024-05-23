@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-   <c:set var="contextPath" value="${pageContext.request.contextPath }" />
+   <c:set var="contextPath" value="${pageContext.request.contextPath}" />
    <%-- 링크 경로의 pageContext.request.contextPath를 변수 : contextPath에 담겠다.  --%>
 
    <nav class="navbar navbar-inverse">
@@ -20,12 +20,23 @@
             <li class="active"><a href="${contextPath }/">Home</a></li>
             <li><a href="boardMain.do">게시판</a></li>
          </ul>
-         <ul class="nav navbar-nav navbar-right">
-            <li><a href="joinForm.do"><span class="glyphicon glyphicon-user"></span>
-                  Sign Up</a></li>
-            <li><a href="loginForm.do"><span class="glyphicon glyphicon-log-in"></span>
-                  Login</a></li>
-         </ul>
+         
+         <c:if test="${empty mem}">  <!-- 조건식 이다. 로그인 안되있을경우 -->
+	         <ul class="nav navbar-nav navbar-right">
+	            <li><a href="joinForm.do"><span class="glyphicon glyphicon-user"></span>
+	                  Sign Up</a></li>
+	            <li><a href="loginForm.do"><span class="glyphicon glyphicon-log-in"></span>
+	                  Login</a></li>
+	         </ul>
+         </c:if>
+         <c:if test="${not empty mem}">  <!-- 조건식 이다. 로그인 되어있을경우-->
+	         <ul class="nav navbar-nav navbar-right">
+	            <li><a href=""><span class="glyphicon glyphicon-wrench"></span>
+	                  회원정보수정</a></li>
+	            <li><a href="imageForm.do"><span class="glyphicon glyphicon-film"></span>프로필사진등록</a></li>
+	            <li><a href="logout.do"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+	         </ul>
+         </c:if>
       </div>
    </nav>
 

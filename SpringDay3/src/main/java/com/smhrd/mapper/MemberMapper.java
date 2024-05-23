@@ -27,6 +27,9 @@ public interface MemberMapper {
 
 	// 회원가입
 	public int join(Member mem);
+
+	// 로그인
+	public Member loin(Member mem);
 	
 	
 	

@@ -152,7 +152,7 @@
          <div class="panel-footer">스프링 - 오진희</div>
       </div>
    </div>
-   
+      
    
    <!-- 회원가입 실패시 띄울 모달창 -->
    <!-- Modal -->

@@ -18,7 +18,9 @@
         VALUES(#{memId},#{memPassword},#{memName},#{memAge},#{memGender},#{memEmail},#{memProfile})		
 	</insert>
 
-
+	<select id="loin" parameterType="com.smhrd.entity.Member" resultType="com.smhrd.entity.Member">
+		select * from MEMBER where memId=#{memId} AND memPassword=#{memPassword}
+	</select>
 
 
 </mapper>

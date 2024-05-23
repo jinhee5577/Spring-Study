@@ -12,7 +12,23 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">
+	$(document).ready(function(){
+	    if(${not empty msgType}){
+	       if(${msgType eq "성공메세지"}){ // msgType "성공메세지"가 아닐 수도있기 때문
+	          $("#messageType").attr("class", "modal-content panel-success");
+	       } else if(${msgType eq "로그아웃메세지"}){
+	    	  $("#messageType").attr("class", "modal-content panel-primary");
+	       }
+	       $("#myMessage").modal("show");
+	    }
+	 });
+
+</script>
+  
 </head>
+
 <body>
 	
 	<div class="container">
@@ -21,11 +37,36 @@
       <h2>Spring JINI</h2>
       <div class="panel panel-warning">
          <div class="panel-heading">Board</div>
-         <div class="panel-body"></div>
+         <div class="panel-body">
+         	<img alt="" src="resources/images/main.jpg"  style="width: 100%; height: 550px;"/>
+         </div>
          <div class="panel-footer">스프링 - 오진희
          </div>
       </div>
    </div>
+   
+   
+    <!-- 회원가입 성공시 띄울 모달창 -->
+   <!-- Modal -->
+   <div class="modal fade" id="myMessage" role="dialog">
+      <div class="modal-dialog">
+
+         <!-- Modal content-->
+         <div id="messageType" class="modal-content panel-info">
+            <div class="modal-header panel-heading">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <h4 class="modal-title">${msgType}</h4>
+            </div>
+            <div class="modal-body">
+               <p id="">${msg}</p>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+         </div>
+
+      </div>
+   </div> 
 
 </body>
 </html>
